@@ -1,0 +1,38 @@
+name: Continuous Deployment
+on: [push]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Test
+        run: |
+          ./batect test
+        env:
+          AUTH_CONFIG : ${{ secrets.AUTH_CONFIG }}
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6' # Version range or exact version of a Ruby version to use, using semvers version range syntax.
+      - name: Deploy dev
+        run: |
+          ./batect deploy
+        env:
+          HEROKU_API_KEY : ${{ secrets.HEROKU_API_KEY }}
+          AUTH_CONFIG : ${{ secrets.AUTH_CONFIG }}
+          ENV : dev
+      - name: Deploy stage
+        run: |
+          ./batect deploy
+        env:
+          HEROKU_API_KEY : ${{ secrets.HEROKU_API_KEY }}
+          AUTH_CONFIG : ${{ secrets.AUTH_CONFIG }}
+          ENV : stage
+      - name: Deploy prod
+        run: |
+          ./batect deploy
+        env:
+          HEROKU_API_KEY : ${{ secrets.HEROKU_API_KEY }}
+          AUTH_CONFIG : ${{ secrets.AUTH_CONFIG }}
+          ENV : prod

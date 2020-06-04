@@ -65,6 +65,6 @@ tasks:
       command: ./.batect/buildAndPushHeroku.sh
       environment:
         HEROKU_API_KEY: ${HEROKU_API_KEY}
-        APP_NAME: myapp-${ENV}
+        APP_NAME: isolation-pool-admin-${ENV}
         ENVIRONMENT: ${ENV}
         AUTH_CONFIG: ${AUTH_CONFIG}

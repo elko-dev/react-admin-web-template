@@ -1,10 +1,10 @@
 {
-  "name": "myapp",
+  "name": "isolation-pool-admin",
   "version": "0.1.0",
   "private": true,
   "config": {
-    "projectName": "myapp",
-    "webAppName": "1:1095344010247:web:6e16064718094a3b8a66a2"
+    "projectName": "isolation-pool-admin",
+    "webAppName": "1:82073331605:web:4f51d6d9261cf794b4389c"
   },
   "dependencies": {
     "@types/jest": "24.0.18",

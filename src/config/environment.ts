@@ -5,9 +5,9 @@ type urlOptions = {
 }
 const urlMap: urlOptions = {
     'local': 'https://freethrow-api-dev.herokuapp.com',
-    'dev': '<DEV_BASE_URL>',
-    'stage': '<STAGE_BASE_URL>',
-    'prod': '<PROD_BASE_URL>'
+    'dev': 'https://isolation-pool-api-dev.herokuapp.com/',
+    'stage': 'https://isolation-pool-api-stage.herokuapp.com/',
+    'prod': 'https://isolation-pool-api-prod.herokuapp.com/'
 }
 
 

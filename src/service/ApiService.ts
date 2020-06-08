@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
-
 import { environment } from '../config/environment';
+
 export class ApiService {
     protected basePath: string = environment.apiBase;
     private graphQLClient = new GraphQLClient(this.basePath);

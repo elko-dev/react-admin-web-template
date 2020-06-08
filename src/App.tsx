@@ -1,25 +1,26 @@
-import React from "react";
-import "./App.css";
-import "./styles/sb-admin-2.min.css";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
-import Login from "./components/Account/Login";
-import Admin from "./components/Admin/Admin";
-import { PrivateRoute } from "./common/components/PrivateRoute";
-import { AccountRoute } from "./common/components/AccountRoute";
+import { Provider } from "mobx-react";
+import * as React from "react";
+import { Route, RouteComponentProps, Switch } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import { Stores } from "./stores/Store";
+import { Routes } from "./config/Routes";
+import LoginPage from "./pages/Login/Login";
 
-const App: React.FC = () => {
-  return (
-    <div className="App" id="wrapper">
-      <Router>
-        <Switch>
-          <PrivateRoute path="/">
-            <Admin />
-          </PrivateRoute>
-          <AccountRoute path="/login"><Login /></AccountRoute>
-        </Switch>
-      </Router>
-    </div>
-  );
-};
+export default class App extends React.Component<RouteComponentProps | {}> {
+  public render(): JSX.Element {
+    return (
+      <Provider {...Stores}>
+        <BrowserRouter>
+          <Switch>
+            <Route
+              path={Routes.LOGIN_PAGE}
+              exact={true}
+              component={LoginPage}
+            />
 
-export default App;
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+    );
+  }
+}

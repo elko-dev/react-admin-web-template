@@ -17,7 +17,24 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "baseUrl": "src",
+    "outDir": "build/dist",
+    "sourceMap": true,
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "downlevelIteration": true,
+    "typeRoots": [
+      "./typings",
+      "node_modules/@types"
+    ],
   },
   "include": [
     "src"

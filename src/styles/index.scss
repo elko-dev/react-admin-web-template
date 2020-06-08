@@ -1,0 +1,16 @@
+@import './variables';
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: white;
+  height: 100vh;
+}
+
+#root {
+    height: 100%;
+}

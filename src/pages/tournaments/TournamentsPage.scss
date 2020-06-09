@@ -1,6 +1,12 @@
 @import 'styles/variables';
 
-.home-page {
+.tournaments-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tournaments-page {
     display: flex;
     flex-direction: column;
     background-color: #ECECEC;

@@ -5,6 +5,7 @@ import { StoreNames } from '../../stores/Store';
 import { IUserStore } from '../../stores/UserStore';
 import { Tournament } from 'models/Tournament';
 import TournamentsTable from './TournamentsTable/TournamentsTable';
+import Header from 'sharedComponents/header/Header';
 
 interface State {
     tournaments: Tournament[];
@@ -36,15 +37,20 @@ export default class TournamentsPage extends React.Component<Props, State> {
     public render() {
         return (
             <div className={classNames.containerStyle}>
-                <h1>Tournaments</h1>
-                <TournamentsTable tournaments={this.state.tournaments} />
+                <Header />
+                <div className={classNames.pageStyle}>
+                    <h1>Tournaments</h1>
+
+                    <TournamentsTable tournaments={this.state.tournaments} />
+                </div>
             </div>
         );
     }
 }
 
 const classNames = {
-    containerStyle: 'home-page',
+    containerStyle: 'tournaments-page-container',
+    pageStyle: 'tournaments-page',
 }
 
 

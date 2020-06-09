@@ -18,7 +18,7 @@ export class Tournament {
     // public readonly participants: Participant[];
     // public readonly gameTypesForTournament: GameTypesForTournament[];
 
-    public constructor(params: Partial<User> = {}) {
+    public constructor(params: Partial<Tournament> = {}) {
         const {
             id,
             name = '',
@@ -59,4 +59,21 @@ export class Tournament {
         // this.participants = participants;
         // this.gameTypesForTournament = gameTypesForTournament;
     }
+}
+
+export interface NewTournament {
+    name: string,
+    startDate: Date,
+    endDate: Date,
+    imageUrl: string,
+    shortDescription: string,
+    longDescription: string,
+    facebookEventUrl: string,
+    handicapDescription: string,
+    buyInPrice: number,
+    buyBacksPerTournament: number,
+    buyBacksPerGame: number,
+    buyBackPrice: number,
+    percentToPayout: number,
+    initialPot: number,
 }

@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import { Stores } from "./stores/Store";
 import { Routes } from "./config/Routes";
 import LoginPage from "./pages/Login/Login";
-import Header from 'sharedComponents/header/Header';
 import TournamentsPage from 'pages/tournaments/TournamentsPage';
 
 export default class App extends React.Component<{}> {
@@ -13,7 +12,6 @@ export default class App extends React.Component<{}> {
     return (
       <Provider {...Stores}>
         <BrowserRouter>
-          <Header />
           <Switch>
             <Route
               path={Routes.LOGIN_PAGE}

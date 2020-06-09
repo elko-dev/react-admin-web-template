@@ -5,8 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import { Stores } from "./stores/Store";
 import { Routes } from "./config/Routes";
 import LoginPage from "./pages/Login/Login";
-import HomePage from 'pages/home/HomePage';
 import Header from 'sharedComponents/header/Header';
+import TournamentsPage from 'pages/tournaments/TournamentsPage';
 
 export default class App extends React.Component<{}> {
   public render(): JSX.Element {
@@ -21,9 +21,9 @@ export default class App extends React.Component<{}> {
               component={LoginPage}
             />
             <Route
-              path={Routes.HOME_PAGE}
+              path={Routes.TOURNAMENTS_PAGE}
               exact={true}
-              component={HomePage}
+              component={TournamentsPage}
             />
           </Switch>
         </BrowserRouter>

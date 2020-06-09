@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './HomePage.scss';
+import './TournamentsPage.scss';
 import { inject, observer } from 'mobx-react';
 import { StoreNames } from '../../stores/Store';
 import { IUserStore } from '../../stores/UserStore';
@@ -15,7 +15,7 @@ interface Props {
 
 @inject(StoreNames.UserStore)
 @observer
-export default class HomePage extends React.Component<Props, State> {
+export default class TournamentsPage extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
@@ -31,7 +31,8 @@ export default class HomePage extends React.Component<Props, State> {
     public render() {
         return (
             <div className={classNames.containerStyle}>
-
+                <h1>Tournaments</h1>
+                
             </div>
         );
     }

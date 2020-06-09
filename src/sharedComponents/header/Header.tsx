@@ -5,6 +5,7 @@ import { StoreNames } from 'stores/Store';
 import { IUserStore } from 'stores/UserStore';
 import './Header.scss';
 import { ELKO_LOGO_SVG } from 'images/images';
+import { Routes } from 'config/Routes';
 
 interface State {
 }
@@ -29,7 +30,7 @@ class Header extends React.Component<Props, State> {
         const { _user } = this.userStore;
         return (
             <div className={classNames.containerStyle}>
-                <div style={{ display: 'flex', cursor: 'pointer' }} onClick={() => { this.navigateToRoute('/') }}>
+                <div style={{ display: 'flex', cursor: 'pointer' }} onClick={() => { this.navigateToRoute(Routes.TOURNAMENTS_PAGE) }}>
                     <img src={ELKO_LOGO_SVG} style={{ height: '100%', maxHeight: '38px' }} alt={'Elko Logo'} />
                     <div className={classNames.logoContainer}>
                         <p>App</p>

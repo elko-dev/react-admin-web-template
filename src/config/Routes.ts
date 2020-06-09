@@ -1,4 +1,4 @@
 export const Routes = {
-    HOME_PAGE: '/',
+    TOURNAMENTS_PAGE: '/tournaments',
     LOGIN_PAGE: '/login',
 };

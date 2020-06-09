@@ -1,0 +1,24 @@
+@import 'styles/variables';
+
+.header-container {
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    padding: 10px 10px;
+    align-items: center;
+}
+
+.header-logo-sub-text-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    margin-left: 10px;
+
+    p {
+        display: flex;
+        color: $primary-color;
+        margin: 0px;
+        font-size: 12px;
+    }
+}

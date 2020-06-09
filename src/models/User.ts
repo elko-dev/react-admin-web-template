@@ -7,6 +7,8 @@ export class User {
     public readonly authId: string;
     public readonly createDate: Date;
     public readonly updateDate: Date;
+    // public readonly participants: Participant[];
+    // public readonly userRole: number;
 
     public constructor(params: Partial<User> = {}) {
         const {
@@ -18,6 +20,8 @@ export class User {
             createDate = '',
             updateDate = '',
             authId = '',
+            // participants = [],
+            // userRole = 0,
         } = params;
 
         this.id = id!;
@@ -28,5 +32,7 @@ export class User {
         this.authId = authId;
         this.createDate = new Date(createDate);
         this.updateDate = new Date(updateDate);
+        // this.participants = participants;
+        // this.userRole = userRole;
     }
 }

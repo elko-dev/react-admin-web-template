@@ -7,6 +7,7 @@ import { Tournament } from 'models/Tournament';
 import TournamentsTable from './TournamentsTable/TournamentsTable';
 import AddTournamentForm from './TournamentForm/AddTournamentForm';
 import Header from 'sharedComponents/header/Header';
+import RoundedButton from 'sharedComponents/roundedButton/RoundedButton';
 
 interface State {
     tournaments: Tournament[];
@@ -37,6 +38,10 @@ export default class TournamentsPage extends React.Component<Props, State> {
         this.setState({ tournaments: testTournaments });
     }
 
+    toggleForm = (): void => {
+        this.setState({ displayForm: !this.state.displayForm });
+    }
+
     public render() {
         const { displayForm, tournaments } = this.state;
         return (
@@ -46,9 +51,14 @@ export default class TournamentsPage extends React.Component<Props, State> {
                     <h1>Tournaments {displayForm && `/ Add`}</h1>
 
                     {displayForm ?
-                        <AddTournamentForm />
+                        <AddTournamentForm toggleShowForm={this.toggleForm} />
                         :
-                        <TournamentsTable tournaments={tournaments} />
+                        <>
+                            <RoundedButton className={classNames.addButton} handleClick={this.toggleForm}>
+                                Add Tournament
+                            </RoundedButton>
+                            <TournamentsTable tournaments={tournaments} />
+                        </>
                     }
 
                 </div>
@@ -60,6 +70,7 @@ export default class TournamentsPage extends React.Component<Props, State> {
 const classNames = {
     containerStyle: 'tournaments-page-container',
     pageStyle: 'tournaments-page',
+    addButton: 'add-tournament-button',
 }
 
 

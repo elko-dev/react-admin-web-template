@@ -17,4 +17,12 @@
         color: $primary-color;
         margin: 0px 0px 10px 0px;
     }
+
+    .add-tournament-button {
+        background-color: $primary-color;
+        margin: 10px;
+        align-self: flex-end;
+        color: white;
+        padding: 10px;
+    }
 }

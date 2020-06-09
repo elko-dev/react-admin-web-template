@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface Props {
+    toggleShowForm(): void;
 }
 
 interface State {
@@ -140,7 +141,7 @@ export default class AddTournamentForm extends React.Component<Props, State> {
                     </div>
                 </div>
                 <div>
-                    <button>Cancel</button>
+                    <button onClick={this.props.toggleShowForm}>Cancel</button>
                     <button>Submit</button>
                 </div>
             </div>

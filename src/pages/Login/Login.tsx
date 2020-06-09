@@ -70,14 +70,12 @@ export default class LoginPage extends React.Component<Props, State> {
                             <div className={classNames.formField}>
                                 <TextInput
                                     onChange={e => this.setState({ email: e.target.value })}
-                                    className={classNames.inputStyle}
                                     type="text"
                                     placeholder="Email Address" />
                             </div>
                             <div className={classNames.formField}>
                                 <TextInput
                                     onChange={e => this.setState({ password: e.target.value })}
-                                    className={classNames.inputStyle}
                                     type="password"
                                     placeholder="Password" />
                             </div>
@@ -106,7 +104,6 @@ const classNames = {
     containerStyle: 'containerStyle',
     formContainer: 'formContainer',
     loginForm: 'loginForm',
-    inputStyle: 'inputStyle',
     formField: 'formField',
     submitBtn: 'submitBtn',
     errorBlock: 'errorBlock',

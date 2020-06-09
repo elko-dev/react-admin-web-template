@@ -5,10 +5,12 @@ import { StoreNames } from '../../stores/Store';
 import { IUserStore } from '../../stores/UserStore';
 import { Tournament } from 'models/Tournament';
 import TournamentsTable from './TournamentsTable/TournamentsTable';
+import AddTournamentForm from './TournamentForm/AddTournamentForm';
 import Header from 'sharedComponents/header/Header';
 
 interface State {
     tournaments: Tournament[];
+    displayForm: boolean;
 }
 
 interface Props {
@@ -23,6 +25,7 @@ export default class TournamentsPage extends React.Component<Props, State> {
 
         this.state = {
             tournaments: [],
+            displayForm: false,
         }
     }
 
@@ -35,13 +38,19 @@ export default class TournamentsPage extends React.Component<Props, State> {
     }
 
     public render() {
+        const { displayForm, tournaments } = this.state;
         return (
             <div className={classNames.containerStyle}>
                 <Header />
                 <div className={classNames.pageStyle}>
-                    <h1>Tournaments</h1>
+                    <h1>Tournaments {displayForm && `/ Add`}</h1>
 
-                    <TournamentsTable tournaments={this.state.tournaments} />
+                    {displayForm ?
+                        <AddTournamentForm />
+                        :
+                        <TournamentsTable tournaments={tournaments} />
+                    }
+
                 </div>
             </div>
         );

@@ -1,4 +1,18 @@
-.textInput{
-    margin: 10px 0px;
+@import 'styles/variables';
 
+.text-input-wrap {
+    margin: 10px 0px;
+    padding: 10px;
+    border: 1px solid $input-gray;
+    border-radius: 5px;
+}
+
+.text-input-style {
+    color: $input-gray;
+    border: none;
+    width: 100%;
+
+    &:focus {
+        outline: thin dotted;
+    }
 }

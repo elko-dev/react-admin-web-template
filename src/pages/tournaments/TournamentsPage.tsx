@@ -8,6 +8,7 @@ import TournamentsTable from './TournamentsTable/TournamentsTable';
 import AddTournamentForm from './TournamentForm/AddTournamentForm';
 import Header from 'sharedComponents/header/Header';
 import RoundedButton from 'sharedComponents/roundedButton/RoundedButton';
+import { TournamentService } from 'service/TournamentService';
 
 interface State {
     tournaments: Tournament[];
@@ -29,13 +30,15 @@ export default class TournamentsPage extends React.Component<Props, State> {
             displayForm: false,
         }
     }
+    private tournamentService: TournamentService = new TournamentService();
 
     get userStore() {
         return this.props[StoreNames.UserStore] as IUserStore;
     }
 
-    componentDidMount = () => {
-        this.setState({ tournaments: testTournaments });
+    componentDidMount = async () => {
+        const tournaments: Tournament[] = await this.tournamentService.getTournaments();
+        this.setState({ tournaments });
     }
 
     toggleForm = (): void => {
@@ -72,133 +75,3 @@ const classNames = {
     pageStyle: 'tournaments-page',
     addButton: 'add-tournament-button',
 }
-
-
-const testTournaments: Tournament[] = [
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-    {
-        id: 1,
-        name: '12 week handicapped bowliards league',
-        startDate: new Date(),
-        endDate: new Date(),
-        imageUrl: '',
-        shortDescription: '',
-        longDescription: '',
-        facebookEventUrl: '',
-        handicapDescription: '',
-        buyInPrice: 20,
-        buyBacksPerTournament: 2,
-        buyBacksPerGame: 0,
-        buyBackPrice: 10,
-        percentToPayout: 0,
-        isPaidOut: false,
-        initialPot: 25,
-    },
-]

@@ -1,0 +1,30 @@
+.centered {
+  text-align: center;
+}
+
+.form {
+  width: 400px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 25px 0;
+  margin: 20px 20px 0;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+}
+
+.formField {
+  margin-bottom: 2rem;
+}
+
+.submitBtn {
+  padding: 15px;
+  width: 100;
+}

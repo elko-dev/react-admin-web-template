@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "config": {
-    "projectName": "isolation-pool-admin",
-    "webAppName": "1:82073331605:web:4f51d6d9261cf794b4389c"
+    "projectName": "myapp",
+    "webAppName": "1:981607418561:web:62fd69e51d116dda45e240"
   },
   "dependencies": {
     "axios": "^0.19.0",

@@ -6,6 +6,7 @@ import { inject, observer } from 'mobx-react';
 import { StoreNames } from '../../stores/Store';
 import { IUserStore } from '../../stores/UserStore';
 import TextInput from 'sharedComponents/textInput/TextInput';
+import { Routes } from 'config/Routes';
 
 interface State {
     loginError: string | null;
@@ -88,7 +89,7 @@ export default class LoginPage extends React.Component<Props, State> {
                     {this.state.loginError && (<div className={classNames.errorBlock}>{this.state.loginError}</div>)}
                     <h5>
                         Don't have an account?&nbsp;
-                        <Link to="/signup">Sign Up</Link>
+                        <Link to={Routes.SIGNUP_PAGE}>Sign Up</Link>
                     </h5>
 
                     <RoundedButton handleClick={this.signInWithGoogle} className={classNames.googleLoginButton}>

@@ -3,6 +3,9 @@ import './Signup.scss';
 import { User } from 'models/User';
 import { inject, observer } from 'mobx-react';
 import { StoreNames } from 'stores/Store';
+import { Redirect } from 'react-router-dom';
+import { Routes } from 'config/Routes';
+import { UserStore } from 'stores/UserStore';
 
 interface State {
   authenticated: boolean;
@@ -18,7 +21,7 @@ interface Props {}
 @inject(StoreNames.UserStore)
 @observer
 export default class Signup extends React.Component<Props, State> {
-  state = {
+  public state = {
     authenticated: false,
     email: '',
     password: '',
@@ -27,10 +30,12 @@ export default class Signup extends React.Component<Props, State> {
     phoneNumber: '',
   };
 
+  private get userStore() {
+    return this.props[StoreNames.UserStore] as UserStore;
+  }
+
   private handleSignup = async () => {
     try {
-      console.log('USER STORE', this.props[StoreNames.UserStore]);
-
       const user: User = await this.props[StoreNames.UserStore].signUp(
         this.state.email,
         this.state.password,
@@ -52,7 +57,9 @@ export default class Signup extends React.Component<Props, State> {
   };
 
   public render() {
-    return (
+    return this.userStore.user ? (
+      <Redirect to={Routes.HOME_PAGE} />
+    ) : (
       <div>
         <h1 className="centered">Sign Up</h1>
         <div className="loginForm">

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import RoundedButton from '../../sharedComponents/roundedButton/RoundedButton';
 import { inject, observer } from 'mobx-react';
 import { StoreNames } from '../../stores/Store';
@@ -10,7 +10,6 @@ import './Login.scss';
 
 interface State {
   loginError: string | null;
-  authenticated: boolean;
   email?: string;
   password?: string;
 }
@@ -22,10 +21,9 @@ interface Props {}
 export default class LoginPage extends React.Component<Props, State> {
   public state: State = {
     loginError: null,
-    authenticated: false,
   };
 
-  get userStore() {
+  private get userStore() {
     return this.props[StoreNames.UserStore] as UserStore;
   }
 
@@ -35,10 +33,6 @@ export default class LoginPage extends React.Component<Props, State> {
         this.state.email!,
         this.state.password!
       );
-
-      this.setState({
-        authenticated: true,
-      });
 
       console.log('Logged in', user);
     } catch (error) {
@@ -53,9 +47,6 @@ export default class LoginPage extends React.Component<Props, State> {
   private signInWithGoogle = async () => {
     try {
       await this.userStore.googleLogin();
-      this.setState({
-        authenticated: true,
-      });
     } catch (error) {
       console.log(error);
       this.setState({
@@ -65,7 +56,9 @@ export default class LoginPage extends React.Component<Props, State> {
   };
 
   public render() {
-    return (
+    return this.userStore.user ? (
+      <Redirect to={Routes.HOME_PAGE} />
+    ) : (
       <div className={classNames.containerStyle}>
         <div className={classNames.formContainer}>
           <div className={classNames.loginForm}>

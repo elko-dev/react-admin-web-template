@@ -3,9 +3,9 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { inject, observer } from 'mobx-react';
 import { StoreNames } from 'stores/Store';
 import { IUserStore } from 'stores/UserStore';
-import './Header.scss';
 import { ELKO_LOGO_SVG } from 'images/images';
 import { Routes } from 'config/Routes';
+import './Header.scss';
 
 interface State {}
 

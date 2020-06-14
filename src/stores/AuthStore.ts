@@ -1,6 +1,6 @@
-import { action, observable } from "mobx";
+import { action, observable } from 'mobx';
 import * as firebase from 'firebase/app';
-import { firebaseAuth } from "../config/auth.config";
+import { firebaseAuth } from '../config/auth.config';
 
 export interface IAuthStore {
   isAuthorized: boolean;
@@ -9,9 +9,9 @@ export interface IAuthStore {
 }
 
 export class AuthStore implements IAuthStore {
-
   @observable public isAuthorized: boolean = false;
-  @observable public currentUser: firebase.User | null = firebaseAuth.currentUser;
+  @observable public currentUser: firebase.User | null =
+    firebaseAuth.currentUser;
 
   @action setAuthState = async (): Promise<void> => {
     firebaseAuth.onAuthStateChanged((user: firebase.User | null) => {
@@ -29,14 +29,15 @@ export class AuthStore implements IAuthStore {
         firebaseAuth.signOut();
         this.currentUser = null;
       }
-    }
-    else {
+    } else {
       this.isAuthorized = false;
       this.currentUser = null;
     }
   }
 
   private isUserVerified(user: firebase.User) {
-    return user.providerData[0]!.providerId === 'facebook.com' || user.emailVerified;
+    return (
+      user.providerData[0]!.providerId === 'facebook.com' || user.emailVerified
+    );
   }
 }

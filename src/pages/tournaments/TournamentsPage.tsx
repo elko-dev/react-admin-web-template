@@ -11,67 +11,67 @@ import RoundedButton from 'sharedComponents/roundedButton/RoundedButton';
 import { TournamentService } from 'service/TournamentService';
 
 interface State {
-    tournaments: Tournament[];
-    displayForm: boolean;
+  tournaments: Tournament[];
+  displayForm: boolean;
 }
 
-interface Props {
-
-}
+interface Props {}
 
 @inject(StoreNames.UserStore)
 @observer
 export default class TournamentsPage extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
+  constructor(props: Props) {
+    super(props);
 
-        this.state = {
-            tournaments: [],
-            displayForm: false,
-        }
-    }
-    private tournamentService: TournamentService = new TournamentService();
+    this.state = {
+      tournaments: [],
+      displayForm: false,
+    };
+  }
+  private tournamentService: TournamentService = new TournamentService();
 
-    get userStore() {
-        return this.props[StoreNames.UserStore] as IUserStore;
-    }
+  get userStore() {
+    return this.props[StoreNames.UserStore] as IUserStore;
+  }
 
-    componentDidMount = async () => {
-        const tournaments: Tournament[] = await this.tournamentService.getTournaments();
-        this.setState({ tournaments });
-    }
+  componentDidMount = async () => {
+    const tournaments: Tournament[] = await this.tournamentService.getTournaments();
+    this.setState({ tournaments });
+  };
 
-    toggleForm = (): void => {
-        this.setState({ displayForm: !this.state.displayForm });
-    }
+  toggleForm = (): void => {
+    this.setState({ displayForm: !this.state.displayForm });
+  };
 
-    public render() {
-        const { displayForm, tournaments } = this.state;
-        return (
-            <div className={classNames.containerStyle}>
-                <Header />
-                <div className={classNames.pageStyle}>
-                    <h1>Tournaments {displayForm && `/ Add`}</h1>
+  public render() {
+    const { displayForm, tournaments } = this.state;
+    return (
+      <div className={classNames.containerStyle}>
+        <Header />
+        <div className={classNames.pageStyle}>
+          <h1>Tournaments {displayForm && `/ Add`}</h1>
 
-                    {displayForm ?
-                        <AddTournamentForm toggleShowForm={this.toggleForm} />
-                        :
-                        <>
-                            <RoundedButton className={classNames.addButton} handleClick={this.toggleForm}>
-                                Add Tournament
-                            </RoundedButton>
-                            <TournamentsTable tournaments={tournaments} />
-                        </>
-                    }
-
-                </div>
-            </div>
-        );
-    }
+          {displayForm ? (
+            <AddTournamentForm toggleShowForm={this.toggleForm} />
+          ) : (
+            <>
+              <RoundedButton
+                className={classNames.addButton}
+                handleClick={this.toggleForm}
+              >
+                Add Tournament
+              </RoundedButton>
+              <TournamentsTable tournaments={tournaments} />
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
 }
 
 const classNames = {
-    containerStyle: 'tournaments-page-container',
-    pageStyle: 'tournaments-page',
-    addButton: 'add-tournament-button',
-}
+  containerStyle: 'tournaments-page-container',
+  pageStyle: 'tournaments-page',
+  addButton: 'add-tournament-button',
+};

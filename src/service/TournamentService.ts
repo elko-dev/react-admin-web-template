@@ -2,10 +2,10 @@ import { ApiService } from './ApiService';
 import { Tournament } from 'models/Tournament';
 
 export class TournamentService {
-    private apiService = new ApiService();
+  private apiService = new ApiService();
 
-    public async getTournaments(): Promise<Tournament[]> {
-        const query: string = `
+  public async getTournaments(): Promise<Tournament[]> {
+    const query: string = `
         query {
             getTournaments(timeFrame: all) {
             tournaments {
@@ -33,14 +33,16 @@ export class TournamentService {
         }
       `;
 
-        try {
-            const response = await this.apiService.authenticatedGqlQuery(query);
-            if (response.getTournaments.errors.length > 0) {
-                throw (response.getTournaments.errors);
-            }
-            return response.getTournaments.tournaments.map((tournament: Tournament) => new Tournament(tournament));
-        } catch (error) {
-            throw (error);
-        }
+    try {
+      const response = await this.apiService.authenticatedGqlQuery(query);
+      if (response.getTournaments.errors.length > 0) {
+        throw response.getTournaments.errors;
+      }
+      return response.getTournaments.tournaments.map(
+        (tournament: Tournament) => new Tournament(tournament)
+      );
+    } catch (error) {
+      throw error;
     }
+  }
 }

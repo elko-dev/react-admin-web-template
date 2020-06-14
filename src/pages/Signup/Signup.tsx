@@ -26,8 +26,8 @@ export default class Signup extends React.Component<Props, State> {
     password: '',
     firstName: '',
     lastName: '',
-    phoneNumber: ''
-  }
+    phoneNumber: '',
+  };
 
   private dummyHandleSignup() {
     //
@@ -89,7 +89,7 @@ export default class Signup extends React.Component<Props, State> {
                 className="submitBtn"
                 type="button"
                 onClick={() => {
-                  this.dummyHandleSignup()
+                  this.dummyHandleSignup();
                   // this.props.handleSignup(
                   //   this.state.email,
                   //   this.state.password,

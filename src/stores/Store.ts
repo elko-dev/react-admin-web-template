@@ -1,9 +1,9 @@
-import { AuthStore } from "./AuthStore";
+import { AuthStore } from './AuthStore';
 import { UserStore } from './UserStore';
 
 export const StoreNames = {
-  AuthStore: "authStore",
-  UserStore: "userStore",
+  AuthStore: 'authStore',
+  UserStore: 'userStore',
 };
 
 export const Stores = {

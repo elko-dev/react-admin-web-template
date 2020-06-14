@@ -1,6 +1,6 @@
-import * as React from "react";
-import "./RoundedButton.scss";
-import { makeCleanClassName } from "../../utilities/utilityFunctions";
+import * as React from 'react';
+import './RoundedButton.scss';
+import { makeCleanClassName } from '../../utilities/utilityFunctions';
 
 interface Props {
   className?: string;
@@ -13,7 +13,7 @@ class RoundedButton extends React.Component<Props, {}> {
       <button
         className={makeCleanClassName([
           classNames.button,
-          this.props.className
+          this.props.className,
         ])}
         onClick={this.props.handleClick}
       >
@@ -26,5 +26,5 @@ class RoundedButton extends React.Component<Props, {}> {
 export default RoundedButton;
 
 const classNames = {
-  button: "rounded-button"
+  button: 'rounded-button',
 };

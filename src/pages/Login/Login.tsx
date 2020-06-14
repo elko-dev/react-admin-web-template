@@ -81,7 +81,7 @@ export default class LoginPage extends React.Component<Props, State> {
                 <button
                   className={classNames.submitBtn}
                   type="button"
-                  onClick={(e) => this.handleLogin()}
+                  onClick={this.handleLogin}
                 >
                   Log In with Email
                 </button>

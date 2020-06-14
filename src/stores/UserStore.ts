@@ -53,4 +53,29 @@ export class UserStore {
       this._user = existingUser;
     }
   }
+
+  @action
+  public async signUp(
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+    phoneNumber: string
+  ): Promise<User> {
+    const user: User = await this.userService.signUpUser(
+      email,
+      password,
+      firstName,
+      lastName,
+      phoneNumber
+    );
+
+    await firebaseAuth.signInWithEmailAndPassword(email, password);
+
+    this._user = await this.userService.getAuthenticatedUser(
+      firebaseAuth.currentUser!
+    );
+
+    return user;
+  }
 }

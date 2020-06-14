@@ -1,27 +1,25 @@
 import * as React from 'react';
 import './Signup.scss';
+import { User } from 'models/User';
+import { inject, observer } from 'mobx-react';
+import { StoreNames } from 'stores/Store';
 
 interface State {
+  authenticated: boolean;
   email: string;
   password: string;
   firstName: string;
   lastName: string;
   phoneNumber: string;
 }
-interface Props {
-  style: React.CSSProperties;
-  // userStore: UserStore;
-  handleSignup: (
-    email: string,
-    password: string,
-    firstName: string,
-    lastName: string,
-    phoneNumber: string
-  ) => void;
-}
 
+interface Props {}
+
+@inject(StoreNames.UserStore)
+@observer
 export default class Signup extends React.Component<Props, State> {
   state = {
+    authenticated: false,
     email: '',
     password: '',
     firstName: '',
@@ -29,9 +27,29 @@ export default class Signup extends React.Component<Props, State> {
     phoneNumber: '',
   };
 
-  private dummyHandleSignup() {
-    //
-  }
+  private handleSignup = async () => {
+    try {
+      console.log('USER STORE', this.props[StoreNames.UserStore]);
+
+      const user: User = await this.props[StoreNames.UserStore].signUp(
+        this.state.email,
+        this.state.password,
+        this.state.firstName,
+        this.state.lastName,
+        this.state.phoneNumber
+      );
+
+      console.log('Created user ', user);
+
+      this.setState({
+        authenticated: true,
+      });
+    } catch (errors) {
+      console.log(errors);
+
+      alert(errors);
+    }
+  };
 
   public render() {
     return (
@@ -88,16 +106,7 @@ export default class Signup extends React.Component<Props, State> {
               <button
                 className="submitBtn"
                 type="button"
-                onClick={() => {
-                  this.dummyHandleSignup();
-                  // this.props.handleSignup(
-                  //   this.state.email,
-                  //   this.state.password,
-                  //   this.state.firstName,
-                  //   this.state.lastName,
-                  //   this.state.phoneNumber
-                  // );
-                }}
+                onClick={this.handleSignup}
               >
                 Register
               </button>

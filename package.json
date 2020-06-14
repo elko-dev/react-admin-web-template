@@ -33,7 +33,10 @@
     "test": "react-scripts test --watchAll=false --passWithNoTests",
     "eject": "react-scripts eject",
     "decode-firebase-config": "./scripts/secret_decode.sh && npm run fetch-firebase-web-config",
-    "fetch-firebase-web-config": "node ./scripts/create.config.files.js $npm_package_config_projectName $npm_package_config_webAppName"
+    "fetch-firebase-web-config": "node ./scripts/create.config.files.js $npm_package_config_projectName $npm_package_config_webAppName",
+    "prettier:base": "prettier --parser typescript",
+    "prettier": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx,js}\"",
+    "prettier:fix": "npm run prettier:base -- --loglevel warn --write \"src/**/*.{ts,tsx,js}\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,6 +63,7 @@
     "@types/react-redux": "^7.1.4",
     "@types/react-router": "^5.1.7",
     "@types/react-router-dom": "^5.1.0",
-    "@types/redux-thunk": "^2.1.0"
+    "@types/redux-thunk": "^2.1.0",
+    "prettier": "^2.0.5"
   }
 }

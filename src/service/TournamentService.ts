@@ -33,16 +33,14 @@ export class TournamentService {
         }
       `;
 
-    try {
-      const response = await this.apiService.authenticatedGqlQuery(query);
-      if (response.getTournaments.errors.length > 0) {
-        throw response.getTournaments.errors;
-      }
-      return response.getTournaments.tournaments.map(
-        (tournament: Tournament) => new Tournament(tournament)
-      );
-    } catch (error) {
-      throw error;
+    const response = await this.apiService.authenticatedGqlQuery(query);
+
+    if (response.getTournaments.errors.length > 0) {
+      throw response.getTournaments.errors;
     }
+
+    return response.getTournaments.tournaments.map(
+      (tournament: Tournament) => new Tournament(tournament)
+    );
   }
 }

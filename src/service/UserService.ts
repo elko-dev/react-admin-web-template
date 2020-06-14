@@ -46,20 +46,18 @@ export class UserService {
     //     return new User(data.signUpUser.user);
     // }
     // );
-    try {
-      const response = await this.apiService.authenticatedGqlQuery(
-        mutationString
-      );
-      if (
-        response.signUpUser.user === null ||
-        response.signUpUser.errors.length > 0
-      ) {
-        throw response.signUpUser.errors;
-      }
-      return new User(response.signUpUser.user);
-    } catch (error) {
-      throw error;
+    const response = await this.apiService.authenticatedGqlQuery(
+      mutationString
+    );
+
+    if (
+      response.signUpUser.user === null ||
+      response.signUpUser.errors.length > 0
+    ) {
+      throw response.signUpUser.errors;
     }
+
+    return new User(response.signUpUser.user);
   }
 
   public async getAuthenticatedUser(authUser: firebase.User): Promise<User> {
@@ -81,18 +79,15 @@ export class UserService {
         }
       `;
 
-    try {
-      const response = await this.apiService.authenticatedGqlQuery(query);
-      if (
-        response.getUserByFirebaseId.user === null ||
-        response.getUserByFirebaseId.errors.length > 0
-      ) {
-        throw response.getUserByFirebaseId.errors;
-      }
-      return new User(response.getUserByFirebaseId.user);
-    } catch (error) {
-      throw error;
+    const response = await this.apiService.authenticatedGqlQuery(query);
+
+    if (
+      response.getUserByFirebaseId.user === null ||
+      response.getUserByFirebaseId.errors.length > 0
+    ) {
+      throw response.getUserByFirebaseId.errors;
     }
+    return new User(response.getUserByFirebaseId.user);
   }
 
   public async signUpAuthUser(
@@ -125,19 +120,17 @@ export class UserService {
         }
       `;
 
-    try {
-      const response = await this.apiService.authenticatedGqlQuery(
-        mutationString
-      );
-      if (
-        response.signUpAuthorizedUser.user === null ||
-        response.signUpAuthorizedUser.errors.length > 0
-      ) {
-        throw response.signUpAuthorizedUser.errors;
-      }
-      return new User(response.signUpAuthorizedUser.user);
-    } catch (error) {
-      throw error;
+    const response = await this.apiService.authenticatedGqlQuery(
+      mutationString
+    );
+
+    if (
+      response.signUpAuthorizedUser.user === null ||
+      response.signUpAuthorizedUser.errors.length > 0
+    ) {
+      throw response.signUpAuthorizedUser.errors;
     }
+
+    return new User(response.signUpAuthorizedUser.user);
   }
 }

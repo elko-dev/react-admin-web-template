@@ -2,7 +2,7 @@ import * as React from 'react';
 import './TournamentsPage.scss';
 import { inject, observer } from 'mobx-react';
 import { StoreNames } from '../../stores/Store';
-import { IUserStore } from '../../stores/UserStore';
+import { UserStore } from '../../stores/UserStore';
 import { Tournament } from 'models/Tournament';
 import TournamentsTable from './TournamentsTable/TournamentsTable';
 import AddTournamentForm from './TournamentForm/AddTournamentForm';
@@ -31,7 +31,7 @@ export default class TournamentsPage extends React.Component<Props, State> {
   private tournamentService: TournamentService = new TournamentService();
 
   get userStore() {
-    return this.props[StoreNames.UserStore] as IUserStore;
+    return this.props[StoreNames.UserStore] as UserStore;
   }
 
   componentDidMount = async () => {

@@ -3,13 +3,6 @@ import { observable, computed, action } from 'mobx';
 import { UserService } from 'service/UserService';
 import { firebaseAuth } from 'config/auth.config';
 
-export interface IUserStore {
-  _user: User | null;
-  getCurrentUser(firebaseId: string, authUser?: firebase.User): void;
-  login(email: string, password: string): Promise<User>;
-  googleLogin(): Promise<User>;
-}
-
 export class UserStore {
   constructor() {
     this.listenUserAuth();
@@ -35,6 +28,11 @@ export class UserStore {
   }
 
   @action
+  public async googleLogin() {
+    throw new Error('Not implemented yet');
+  }
+
+  @action
   public async getCurrentUser(authUser?: firebase.User): Promise<void> {
     let existingUser: User | null = null;
     if (authUser) {
@@ -55,6 +53,19 @@ export class UserStore {
   }
 
   @action
+  public async login(email: string, password: string): Promise<User> {
+    await firebaseAuth.signInWithEmailAndPassword(email, password);
+
+    const user = await this.userService.getAuthenticatedUser(
+      firebaseAuth.currentUser!
+    );
+
+    this._user = user;
+
+    return user;
+  }
+
+  @action
   public async signUp(
     email: string,
     password: string,
@@ -70,11 +81,7 @@ export class UserStore {
       phoneNumber
     );
 
-    await firebaseAuth.signInWithEmailAndPassword(email, password);
-
-    this._user = await this.userService.getAuthenticatedUser(
-      firebaseAuth.currentUser!
-    );
+    await this.login(email, password);
 
     return user;
   }

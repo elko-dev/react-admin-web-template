@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import './Login.scss';
 import RoundedButton from '../../sharedComponents/roundedButton/RoundedButton';
 import { inject, observer } from 'mobx-react';
 import { StoreNames } from '../../stores/Store';
-import { IUserStore } from '../../stores/UserStore';
+import { UserStore } from '../../stores/UserStore';
 import TextInput from 'sharedComponents/textInput/TextInput';
 import { Routes } from 'config/Routes';
+import './Login.scss';
 
 interface State {
   loginError: string | null;
@@ -26,17 +26,24 @@ export default class LoginPage extends React.Component<Props, State> {
   };
 
   get userStore() {
-    return this.props[StoreNames.UserStore] as IUserStore;
+    return this.props[StoreNames.UserStore] as UserStore;
   }
 
   private handleLogin = async () => {
     try {
-      await this.userStore.login(this.state.email!, this.state.password!);
+      const user = await this.userStore.login(
+        this.state.email!,
+        this.state.password!
+      );
+
       this.setState({
         authenticated: true,
       });
+
+      console.log('Logged in', user);
     } catch (error) {
       console.log(error);
+
       this.setState({
         loginError: error.message,
       });

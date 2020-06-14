@@ -119,8 +119,6 @@ export default class AddTournamentForm extends React.Component<Props, State> {
       <div className={classNames.wrapper}>
         <div className={classNames.form}>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <img></img>
-
             {this.renderTextInput(
               'Facebook Event UTL (optional)',
               'facebookEventUrl'

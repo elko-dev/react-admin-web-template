@@ -13,8 +13,8 @@ ARG AUTH_CONFIG
 ENV AUTH_CONFIG=$AUTH_CONFIG
 RUN echo "ARGS is ${AUTH_CONFIG}"
 
-RUN yarn install
-RUN yarn build
+RUN npm ci
+RUN npm run build
 
 EXPOSE 3000
 
@@ -36,4 +36,4 @@ COPY --from=build scripts ./scripts
 COPY --from=build node_modules ./node_modules
 
 COPY --from=build build ./build
-CMD yarn serve
+CMD npm run serve

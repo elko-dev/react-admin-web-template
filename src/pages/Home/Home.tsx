@@ -37,7 +37,13 @@ class HomePage extends Component<Props> {
 
         <div style={{ marginTop: 50, width: 700 }}>
           <h3>Users</h3>
-          <Table columns={columns} rows={users} uniqueRowIdentifier="id" />
+
+          <Table
+            columns={columns}
+            rows={users}
+            uniqueRowIdentifier="id"
+            initialSortDataKey="id"
+          />
         </div>
       </div>
     );

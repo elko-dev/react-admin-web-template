@@ -17,4 +17,33 @@
 
 .cell {
   padding: 10px;
+  display: relative;
+}
+
+.header-cell-inner-wrapper {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.sort-icon {
+  &::before,
+  &::after {
+    border: 4px solid transparent;
+    content: '';
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 0px;
+    width: 0;
+  }
+
+  &::before {
+    border-bottom-color: white;
+  }
+
+  &::after {
+    border-top-color: white;
+    margin-top: 1px;
+  }
 }

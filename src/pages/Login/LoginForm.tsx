@@ -23,7 +23,7 @@ export default function LoginForm({ userStore }: Props) {
   const handleLogin = async () => {
     try {
       const user = await userStore.login(email!, password!);
-      const from = location.state.from || { pathname: '/' };
+      const from = location.state?.from || { pathname: '/' };
 
       history.replace(from);
 

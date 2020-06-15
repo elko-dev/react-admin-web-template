@@ -4,20 +4,6 @@ import { UserService } from 'service/UserService';
 import { firebaseAuth } from 'config/auth.config';
 
 export class UserStore {
-  constructor() {
-    this.listenUserAuth();
-  }
-
-  private listenUserAuth = (): void => {
-    firebaseAuth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        this.getCurrentUser(authUser);
-      } else {
-        this.getCurrentUser();
-      }
-    });
-  };
-
   private userService: UserService = new UserService();
 
   @observable public _user: User | null = null;

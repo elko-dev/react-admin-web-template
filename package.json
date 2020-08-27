@@ -4,7 +4,7 @@
   "private": true,
   "config": {
     "projectName": "myapp",
-    "webAppName": "1:981607418561:web:62fd69e51d116dda45e240"
+    "webAppName": "1:1095344010247:web:6e16064718094a3b8a66a2"
   },
   "scripts": {
     "start": "npm run decode-firebase-config && react-scripts start",
@@ -18,7 +18,8 @@
     "prettier": "npm run prettier:base -- --list-different \"src/**/*.{ts,tsx,js}\"",
     "prettier:fix": "npm run prettier:base -- --loglevel warn --write \"src/**/*.{ts,tsx,js}\"",
     "lint": "npx eslint 'src/**/*.{ts,tsx,js}' -c ./eslintconfig.json",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "quality:scan": "node sonar-scan.js"
   },
   "husky": {
     "hooks": {
@@ -46,10 +47,11 @@
     "react-fontawesome": "^1.6.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.4.1",
+    "react-scripts": "^3.4.3",
     "reactjs-popup": "^1.5.0",
     "request-promise": "^4.2.5",
     "serve": "^11.3.0",
+    "sonarqube-scanner": "^2.7.0",
     "typescript": "^3.7.0-beta"
   },
   "devDependencies": {

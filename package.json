@@ -10,6 +10,7 @@
     "start": "npm run decode-firebase-config && react-scripts start",
     "serve": "./scripts/serve.sh",
     "build": "npm run decode-firebase-config && react-scripts build",
+    "clean": "./node_modules/.bin/rimraf node_modules build .scannerwork",
     "test": "react-scripts test --watchAll=false --passWithNoTests",
     "eject": "react-scripts eject",
     "decode-firebase-config": "./scripts/secret_decode.sh && npm run fetch-firebase-web-config",
@@ -71,7 +72,8 @@
     "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.10",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "rimraf": "^3.0.2"
   },
   "browserslist": {
     "production": [

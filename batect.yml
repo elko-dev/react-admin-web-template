@@ -71,8 +71,6 @@ tasks:
   qualityScan:
     description: Code Quality Scan
     group: Test tasks
-    prerequisites:
-      - build
     run:
       container: build-env
       command: node sonar-scan.js

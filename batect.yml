@@ -78,4 +78,3 @@ tasks:
       command: node sonar-scan.js
       environment:
         CODE_QUALITY_TOKEN: ${CODE_QUALITY_TOKEN} 
-        AUTH_CONFIG: ${AUTH_CONFIG}
